@@ -60,6 +60,8 @@ class SessionToken {
   }
 }
 
+export const clientSessionToken = new SessionToken();
+
 let clientLogoutRequest: null | Promise<any> = null;
 export const isClient = () => typeof window !== "undefined";
 

@@ -17,7 +17,6 @@ import {
   RegisterBodyType,
 } from "@/schemaValidations/auth.schema";
 import authApiRequest from "@/apiRequest/auth";
-import { toast } from "@/components/ui/use-toast";
 import { handleErrorApi } from "@/lib/utils";
 import { useState } from "react";
 import { useAppContext } from "@/app/app-provider";
@@ -46,9 +45,6 @@ export default function RegisterForm() {
       await authApiRequest.auth({
         sessionToken: result.payload.data.token,
         expiresAt: result.payload.data.expiresAt
-      })
-      toast({
-        description: result.payload.message
       })
       setUser(result.payload.data.account)
 
