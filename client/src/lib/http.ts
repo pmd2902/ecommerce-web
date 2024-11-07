@@ -30,7 +30,6 @@ export class HttpError extends Error {
     this.payload = payload;
   }
 }
-
 export class EntityError extends HttpError {
   status: 422;
   payload: EntityErrorPayload;
@@ -90,8 +89,6 @@ const request = async <Response>(
       baseHeaders.Authorization = `Bearer ${sessionToken}`;
     }
   }
-  // Nếu không truyền baseUrl (hoặc baseUrl = undefined) thì lấy từ envConfig.NEXT_PUBLIC_API_ENDPOINT
-  // Nếu truyền baseUrl thì lấy giá trị truyền vào, truyền vào '' thì đồng nghĩa với việc chúng ta gọi API đến Next.js Server
 
   const baseUrl =
     options?.baseUrl === undefined
@@ -155,7 +152,6 @@ const request = async <Response>(
       throw new HttpError(data);
     }
   }
-  // Đảm bảo logic dưới đây chỉ chạy ở phía client (browser)
   if (isClient()) {
     if (
       ["auth/login", "auth/register"].some(

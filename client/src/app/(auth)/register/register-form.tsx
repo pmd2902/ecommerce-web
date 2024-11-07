@@ -41,7 +41,6 @@ export default function RegisterForm() {
     setLoading(true)
     try {
       const result = await authApiRequest.register(values)
-
       await authApiRequest.auth({
         sessionToken: result.payload.data.token,
         expiresAt: result.payload.data.expiresAt
@@ -58,6 +57,7 @@ export default function RegisterForm() {
       setLoading(false)
     }
   }
+  
   return (
     <Form {...form}>
       <form
